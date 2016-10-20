@@ -23,17 +23,17 @@ $(document).ready(function() {
   				for (var i = 0; i < data.Search.length; i++) {
   					resultsTable +=
   						'<tr>' +
-  							'<td rowspan="4">' + '<img src="' + data.Search[i].Poster +'" alt="' + data.Search.Title + '">' + '</td>' +
-  						'</tr>' +
-  						'<tr>' +
-  							'<td><strong>Titolo: </strong></td>' +  '<td>' + data.Search[i].Title + '</td>' + 
-  						'</tr>' +
-  						'<tr>' +
-  							'<td><strong>Anno: </strong></td>' + '<td>' + data.Search[i].Year + '</td>' +
-  						'</tr>' +
-  						'<tr>' +
-  							'<td><strong>Genere: </strong></td>' + '<td>' + data.Search[i].Type + '</td>' +
-  						'</tr>';
+	  						'<div class="row">' +
+	  							'<div class="col-md-2">' +
+	  								'<img src="' + data.Search[i].Poster +'" alt="' + data.Search.Title + '">' + 
+	  							'</div>' +
+	  							'<div class="col-md-10">' +
+	  								'<td><strong>Titolo: </strong></td>' +  '<td>' + data.Search[i].Title + '</td>' +  						  						
+	  								'<td><strong>Anno: </strong></td>' + '<td>' + data.Search[i].Year + '</td>' + 						  						
+	  								'<td><strong>Genere: </strong></td>' + '<td>' + data.Search[i].Type + '</td>' +
+	  							'</div>' +
+	  						'</div>' +
+	  					'</tr>';
   				}
   				
   				$('#searchResultsTable').html(resultsTable);
