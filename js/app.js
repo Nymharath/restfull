@@ -22,28 +22,39 @@ $(document).ready(function() {
   				$('#noResultsMessage').hide();
   				for (var i = 0; i < data.Search.length; i++) {
   					resultsTable +=
-  						'<tr>' +
+  						'<tr title="' + data.Search[i].Title + '" >' +
 	  						'<div class="row">' +
 	  							'<div class="col-md-2">' +
-	  								'<img src="' + data.Search[i].Poster +'" alt="' + data.Search.Title + '">' + 
+	  								'<td>' + '<img src="' + data.Search[i].Poster +'" alt="' + data.Search.Title + '">' + '</td>' + 
 	  							'</div>' +
 	  							'<div class="col-md-10">' +
-	  								'<td><strong>Titolo: </strong></td>' +  '<td>' + data.Search[i].Title + '</td>' +  						  						
-	  								'<td><strong>Anno: </strong></td>' + '<td>' + data.Search[i].Year + '</td>' + 						  						
-	  								'<td><strong>Genere: </strong></td>' + '<td>' + data.Search[i].Type + '</td>' +
+	  								'<div class="row">' + '<td><strong>Titolo: </strong></td>' +  '<td>' + data.Search[i].Title + '</td>' + '</div>' + 						  						
+	  								'<div class="row">' + '<td><strong>Anno: </strong></td>' +  '<td>' + data.Search[i].Year + '</td>' + '</div>' + 						  						
+	  								'<div class="row">' + '<td><strong>Genere: </strong></td>' +  '<td>' + data.Search[i].Type + '</td>' + '</div>' +
 	  							'</div>' +
 	  						'</div>' +
 	  					'</tr>';
-  				}
+  				} /*END FOR*/
   				
   				$('#searchResultsTable').html(resultsTable);
   				
+  			} /*END ELSE*/
 
-
-
-  			}
-
-		});
+		}); /*END FIRST THEN*/
 		
+	}); /*END BUTTON BIND*/
+
+	$('#searchResultsTable').on('click', 'tr', function(event){
+		// event.preventDefault();
+		
+		var title = $(this).attr('title');
+		var url = endpoint + '?t=' + title;
+		$.ajax ({
+			url : url,
+			method : 'GET',
+		}).then(function(data) {
+			console.log(data);
+		})
+
 	});
-});
+}); /*END DOCUMENT READY*/
