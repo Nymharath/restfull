@@ -22,7 +22,7 @@ $(document).ready(function() {
   				$('#noResultsMessage').hide();
   				for (var i = 0; i < data.Search.length; i++) {
   					resultsTable +=
-  						'<tr title="' + data.Search[i].Title + '" >' +
+  						'<tr data-toggle="modal" data-target=".bs-example-modal-lg" title="' + data.Search[i].Title + '" >' +
 	  						'<div class="row">' +
 	  							'<div class="col-md-2">' +
 	  								'<td>' + '<img src="' + data.Search[i].Poster +'" alt="' + data.Search.Title + '">' + '</td>' + 
@@ -45,15 +45,25 @@ $(document).ready(function() {
 	}); /*END BUTTON BIND*/
 
 	$('#searchResultsTable').on('click', 'tr', function(event){
-		// event.preventDefault();
+		event.preventDefault();
 		
+		var detail = '';
 		var title = $(this).attr('title');
+
 		var url = endpoint + '?t=' + title;
 		$.ajax ({
 			url : url,
 			method : 'GET',
 		}).then(function(data) {
-			console.log(data);
+			$.each(data, function(key, value) {
+    			console.log(key, value);
+
+    			detail += '<tr>' + '<td>' + key + '</td>' + '<td>' + value + '</td>' + '</tr>';
+			});
+			$('#modal').modal();
+			$('#movie_detail').html(detail);
+
+
 		})
 
 	});
