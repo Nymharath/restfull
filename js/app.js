@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+	$('#detailedTable').hide();
+
 	var endpoint = 'http://www.omdbapi.com/'
 	$('#noResultsMessage').hide();
 
@@ -47,7 +49,8 @@ $(document).ready(function() {
 	$('#searchResultsTable').on('click', 'tr', function(event){
 		event.preventDefault();
 		
-		var detail = '';
+		var movie_detail = '';
+		var poster_detail = '';
 		var title = $(this).attr('title');
 
 		var url = endpoint + '?t=' + title;
@@ -56,12 +59,16 @@ $(document).ready(function() {
 			method : 'GET',
 		}).then(function(data) {
 			$.each(data, function(key, value) {
-    			console.log(key, value);
-
-    			detail += '<tr>' + '<td>' + key + '</td>' + '<td>' + value + '</td>' + '</tr>';
+   				if (key != 'Poster') {
+    				movie_detail += '<tr>' + '<td>' + key + '</td>' + '<td>' + value + '</td>' + '</tr>';
+				} else {
+					poster_detail += '<img src="' + value['Poster'] + '">';
+				}			
 			});
-			$('#modal').modal();
-			$('#movie_detail').html(detail);
+			$('#detailedTable').html(movie_detail);
+			$('#posterDetail').html(poster_detail);
+			$('#searchResultsTable').hide();
+			$('#detailedTable').show();
 
 
 		})
