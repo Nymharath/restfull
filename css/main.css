@@ -1,3 +1,28 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+BODY {
+	background-color: #eee;
+	font-family: 'Lato', sans-serif;
+}
+
+.container {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background: linear-gradient(to right, ivory, lemonChiffon);
+}
+.title {
+	height: 100px;
+	background-color: black;
+	color: white;
+	text-shadow: 1px 1px 2px black, 0 0 25px red, 0 0 5px orange;
+	text-align: center;
+}
+
+#title {
+	min-width: 400px;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
