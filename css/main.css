@@ -6,6 +6,10 @@ BODY {
 	background-color: #eee;
 	font-family: 'Lato', sans-serif;
 }
+					
+
+					/*FORM*/
+
 
 .container {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -38,3 +42,17 @@ BODY {
 .navbar-nav{
 	float: right;
 }
+
+					/*RESULTS*/
+
+
+#noResultsMessage {
+	font-style: italic;
+}
+
+#searchResultsTable IMG {
+	height: 100px;
+	
+}
+
+
